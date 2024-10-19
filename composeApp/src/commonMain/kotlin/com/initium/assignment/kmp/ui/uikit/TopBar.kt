@@ -1,6 +1,7 @@
 package com.initium.assignment.kmp.ui.uikit
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,9 +15,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -31,20 +29,25 @@ fun CustomTopBar(text: String, onBackClick: (() -> Unit)? = null) {
         modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
-            .shadow(elevation = 4.dp, shape = MaterialTheme.shapes.small)
             .padding(bottom = 4.dp)
-            .background(Color.White)
-        ,
+            .background(Color.White),
         verticalAlignment = Alignment.CenterVertically
     ) {
         // Back arrow icon
         val isShowBack = onBackClick != null
         if (isShowBack) {
-            Icon(
-                modifier = Modifier.weight(1f),
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back",
-                tint = Md3.colorScheme.scrim
-            )
+            Row(
+                Modifier.weight(1f),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .clickable { onBackClick?.invoke() },
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back",
+                    tint = Md3.colorScheme.scrim
+                )
+            }
         }
 
         Text(

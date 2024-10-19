@@ -1,6 +1,7 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -8,14 +9,14 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.sqlDelight)
 }
 
 kotlin {
+    jvmToolchain(11)
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
-        }
+        instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
     }
     
     listOf(
@@ -36,7 +37,8 @@ kotlin {
             implementation(libs.ktor.client.okhttp)
             implementation(libs.koin.android)
             implementation(libs.coroutines.android)
-
+            implementation(libs.sqlDelight.driver.android)
+            implementation(libs.coil.network.anroid)
         }
         commonMain.dependencies {
             implementation(libs.ktor.client.core)
@@ -48,6 +50,7 @@ kotlin {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
+            implementation(compose.material)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
@@ -66,11 +69,16 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
-//            implementation("io.github.bvantur:inspektify-ktor2:1.0.0-beta03")
+            implementation(libs.sqlDelight.driver.common)
+
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.common)
+            implementation("io.github.bvantur:inspektify-ktor2:1.0.0-beta03")
         }
 
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            implementation(libs.sqlDelight.driver.ios)
         }
 
         commonTest.dependencies {
@@ -111,6 +119,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.firebase.dataconnect)
     debugImplementation(compose.uiTooling)
 }
 

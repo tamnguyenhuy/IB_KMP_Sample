@@ -20,8 +20,10 @@ serializationVersion = "1.7.0"
 voyager = "1.1.0-beta03"
 kermit = "2.0.4"
 koin = "4.0.0"
-sqlDelight = "2.0.2"
+sqlDelight = "2.0.1"
+coilVerion = "3.0.0-rc01"
 foundationLayoutAndroid = "1.7.4"
+firebaseDataconnect = "16.0.0-beta01"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -74,10 +76,16 @@ koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
 
 #sqlDelight
-sqlDelight-driver-sqlite = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqlDelight" }
+sqlDelight-driver-common = { module = "app.cash.sqldelight:runtime", version.ref = "sqlDelight" }
 sqlDelight-driver-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" }
-sqlDelight-driver-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
+sqlDelight-driver-ios = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
 androidx-foundation-layout-android = { group = "androidx.compose.foundation", name = "foundation-layout-android", version.ref = "foundationLayoutAndroid" }
+firebase-dataconnect = { group = "com.google.firebase", name = "firebase-dataconnect", version.ref = "firebaseDataconnect" }
+
+#coil
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilVerion" }
+coil-network-common = { module = "io.coil-kt.coil3:coil-network-ktor2", version.ref = "coilVerion" }
+coil-network-anroid = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilVerion" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
