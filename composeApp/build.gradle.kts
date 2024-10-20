@@ -90,6 +90,11 @@ kotlin {
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.uiTest)
             implementation(libs.coroutines.test)
+            implementation(libs.bundles.common.test)
+        }
+
+        androidUnitTest.dependencies {
+            implementation(libs.bundles.android.test)
         }
     }
 }
@@ -127,10 +132,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
 }
 
 dependencies {
     implementation(libs.androidx.foundation.layout.android)
-    implementation(libs.firebase.dataconnect)
     debugImplementation(compose.uiTooling)
 }
