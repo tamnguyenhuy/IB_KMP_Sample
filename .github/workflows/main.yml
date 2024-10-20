@@ -3,7 +3,7 @@ name: Verify
 on:
   push:
     branches-ignore:
-      - main  # Trigger on every push to any branch ingnore main
+      - main  # Trigger on every push to any branch ignore main
 
 jobs:
   build:

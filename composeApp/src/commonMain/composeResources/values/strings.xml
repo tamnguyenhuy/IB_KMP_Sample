@@ -5,4 +5,5 @@
     <string name="follower">Follower</string>
     <string name="following">Following</string>
     <string name="blog">Blog</string>
+    <string name="retry_txt">The data retrieval process has failed. \nTo reload, pull to refresh.</string>
 </resources>

@@ -1,0 +1,44 @@
+import kotlin.Boolean;
+import kotlin.Int;
+import kotlin.Long;
+
+CREATE TABLE UserDb (
+    id TEXT PRIMARY KEY,
+    username TEXT,
+    avatarUrl TEXT,
+    htmlUrl TEXT,
+    location TEXT,
+    followers INTEGER AS Long,
+    following INTEGER AS Long,
+    blog TEXT,
+    inDetail INTEGER AS Boolean
+);
+
+-- -- INSERT or REPLACE ===========================
+insert:
+INSERT OR REPLACE INTO UserDb
+VALUES ?;
+
+-- QUERY ===========================
+
+selectById:
+SELECT *
+FROM UserDb
+WHERE id = ?;
+
+selectByUserName:
+SELECT *
+FROM UserDb
+WHERE username = ?;
+
+selectAll:
+SELECT * FROM UserDb;
+
+-- -- DELETE ===========================
+deleteById:
+DELETE FROM UserDb
+WHERE id = ?;
+
+-- DELETE ALL ===========================
+deleteAll:
+DELETE FROM UserDb;
