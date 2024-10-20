@@ -20,7 +20,26 @@ class UserService private constructor(): DomainBase() {
      */
     fun removeALlUsers() {
         userLocalRepo.removeAllUsers()
-        println("All users removed from local db")
+    }
+
+    /**
+     * Method to get all users from local db.
+     *
+     * @return List of User
+     */
+    fun fetchAllUsers(): List<User> {
+        return userLocalRepo.getAllUsers()
+    }
+
+    /**
+     * Method to get user by id from local db.
+     *
+     * @param userName The userName of the user.
+     *
+     * @return User in success case, null otherwise
+     */
+    fun getUser(userName: String): User? {
+        return userLocalRepo.getUser(userName = userName)
     }
 
     /**
@@ -49,13 +68,8 @@ class UserService private constructor(): DomainBase() {
 
         // Fetch users from remote server if does not exist in local db
         val result = userRemoteRepo.fetchUser(itemPerPage, since) ?: emptyArray()
-        if (result.isNotEmpty()) {
-            startCoroutineNewScope(Dispatchers.Default) {
-                result.forEach {
-                    // Save user to local db in other coroutine
-                    userLocalRepo.saveUser(it)
-                }
-            }
+        result.forEach {
+            userLocalRepo.saveUser(it)
         }
 
         return ListDataStruct(
