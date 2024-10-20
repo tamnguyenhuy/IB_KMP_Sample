@@ -1,6 +1,5 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
@@ -41,6 +40,7 @@ kotlin {
             implementation(libs.coil.network.anroid)
         }
         commonMain.dependencies {
+            // Ktor dependencies for network calls
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.client.serialization)
@@ -59,21 +59,25 @@ kotlin {
             implementation(libs.coroutines.core)
             implementation(libs.serialization)
             implementation(libs.serialization.json)
-
             implementation(libs.kermit)
 
+            // voyager dependencies for navigation
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.lifecycle.kmp)
             implementation(libs.voyager.screenModel)
             implementation(libs.androidx.lifecycle.viewmodel.compose)
             implementation(libs.androidx.lifecycle.runtime.compose)
+
+            // koin dependencies for DI
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
+
+            // sqlDelight dependencies for local db
             implementation(libs.sqlDelight.driver.common)
 
+            // coil dependencies to fetch images from url
             implementation(libs.coil.compose)
             implementation(libs.coil.network.common)
-            implementation("io.github.bvantur:inspektify-ktor2:1.0.0-beta03")
         }
 
         iosMain.dependencies {
@@ -86,6 +90,14 @@ kotlin {
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.uiTest)
             implementation(libs.coroutines.test)
+        }
+    }
+}
+
+sqldelight {
+    databases {
+        create("MyDatabase") {
+            packageName.set("com.initium.assignment.kmp.domain.repository.local.db")
         }
     }
 }
@@ -122,4 +134,3 @@ dependencies {
     implementation(libs.firebase.dataconnect)
     debugImplementation(compose.uiTooling)
 }
-
