@@ -42,8 +42,8 @@ import androidx.compose.ui.unit.dp
 import assignment.composeapp.generated.resources.Res
 import assignment.composeapp.generated.resources.close
 import assignment.composeapp.generated.resources.retry_txt
-import com.initium.assignment.domain.model.DEFAULT_LIMIT
-import com.initium.assignment.domain.model.ListDataStruct
+import com.initium.assignment.model.DEFAULT_LIMIT
+import com.initium.assignment.model.ListDataStruct
 import com.initium.assignment.ui.theme.Md3
 import kotlinx.coroutines.flow.distinctUntilChanged
 import org.jetbrains.compose.resources.painterResource

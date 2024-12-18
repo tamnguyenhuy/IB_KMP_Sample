@@ -1,3 +1,4 @@
+import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
@@ -9,6 +10,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.sqlDelight)
+    alias(libs.plugins.detekt)
 }
 
 kotlin {

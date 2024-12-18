@@ -1,17 +1,16 @@
 package com.initium.assignment.domain.services
 
+import com.initium.assignment.data.repository.local.contracts.IUserLocalRepo
+import com.initium.assignment.data.repository.remote.contracts.IUserRemoteRepo
 import com.initium.assignment.domain.base.DomainBase
-import com.initium.assignment.domain.model.ListDataStruct
-import com.initium.assignment.domain.repository.remote.serverapi.models.User
-import kotlinx.coroutines.Dispatchers
+import com.initium.assignment.model.ListDataStruct
+import com.initium.assignment.model.User
 
-class UserService private constructor(): DomainBase() {
-    companion object {
-        val instance by lazy {
-            UserService()
-        }
-    }
-
+class UserService(
+    private val userRemoteRepo: IUserRemoteRepo,
+    private val userLocalRepo: IUserLocalRepo
+) :
+    DomainBase() {
     // flag to check if data exists in local db
     private var isHasDbData: Boolean = false
 

@@ -1,19 +1,12 @@
 package com.initium.assignment.ui.app.user.mvi
 
-import com.initium.assignment.domain.model.ApplicationContext
-import com.initium.assignment.domain.model.ListDataStruct
-import com.initium.assignment.domain.services.InitialService
+import com.initium.assignment.model.ListDataStruct
 import com.initium.assignment.domain.services.UserService
 import com.initium.assignment.ui.core.mvi.MviViewModel
 
 class UserViewModel(
-    context: ApplicationContext,
-    private val userService: UserService = UserService.instance
+    private val userService: UserService
 ) : MviViewModel<UserState, UserEvent>(initial = UserState()) {
-
-    init {
-        InitialService.instance.initialize(context)
-    }
 
     override fun processEvent(event: UserEvent) {
         when (event) {
