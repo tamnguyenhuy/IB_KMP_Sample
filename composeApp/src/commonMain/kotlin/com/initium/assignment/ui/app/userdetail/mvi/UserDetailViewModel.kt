@@ -4,7 +4,7 @@ import com.initium.assignment.domain.services.UserService
 import com.initium.assignment.ui.core.mvi.MviViewModel
 
 class UserDetailViewModel(
-    private val userService: UserService = UserService.instance
+    private val userService: UserService
 ) :
     MviViewModel<UserDetailState, UserDetailEvent>(initial = UserDetailState()) {
 

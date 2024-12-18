@@ -11,7 +11,7 @@ androidx-espresso-core = "3.6.1"
 androidx-lifecycle = "2.8.2"
 androidx-material = "1.12.0"
 androidx-test-junit = "1.2.1"
-compose-plugin = "1.6.11"
+compose-plugin = "1.7.0" # compose multiplatform plugin
 junit = "4.13.2"
 kotlin = "2.0.20"
 ktorVersion = "2.3.11"
@@ -28,6 +28,7 @@ androidXTestCore = "1.6.1"
 testRunner = "1.5.2"
 robolectric = "4.11.1"
 testExtJunit = "1.1.5"
+detekt = "1.23.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
@@ -113,3 +114,4 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
