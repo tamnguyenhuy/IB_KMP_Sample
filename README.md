@@ -48,19 +48,23 @@ Note: Replace with your own GitHub API key to increase rate limit in `RemoteRepo
 │   ├── androidMain
 │   ├── commonMain
 │   │   ├── kotlin/com/initium/assigment
-│   │   │   ├── di                                           <––– Koin Depedenency Injection package
+│   │   │   ├── model                                        <––– Common models
+|   |   |   ├── data                                         <––– Data layer
+|   |   |   |   ├── di                                       <––– Koin Depedenency Injection for data layer
+|   |   |   |   ├── local                                    <––– Local repository
+|   |   |   |   ├── remote                                   <––– Remote repository
+|   |   |   |   ├── repository                               <––– Repository for data layer => domain layer will use this
+│   │   │   ├── di                                           <––– Koin Depedenency Injection for whole app
 │   │   │   ├── domain
 │   │   │   │   ├── base                                     <––– Base classes for domain layer
-│   │   │   │   ├── model                                    <––– Domain models
-│   │   │   │   ├── repository
-│   │   │   │   │   ├── local                                <––– Local repository
-│   │   │   │   │   ├── remote                               <––– Remote repository
+│   │   │   │   ├── di                                       <––– Koin Depedenency Injection for domain layer
 │   │   │   │   └── services                                 <––– Services for domain layer => ui layer will use this
 │   │   │   ├── ui
 │   │   │   │   ├── app                                      <––– App Screens and ViewModels 
 │   │   │   │   ├── core                                     <––– Navigation and screen models, state, event, etc
 │   │   │   │   ├── theme                                    <––– Theme for the app
 │   │   │   │   ├── uikit                                    <––– UIKit components for the app
+│   │   │   │   └── di                                       <––– Koin Depedenency Injection for ui layer
 │   │   ├── composeResources                                 <––– Resources to store local images and strings
 │   │   └── sqldelight/com/initium/assigment                 <––– Local database entities
 │   └── iosMain
