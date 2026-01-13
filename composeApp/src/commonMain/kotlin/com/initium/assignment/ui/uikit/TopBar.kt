@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,6 +19,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.composables.icons.lucide.ArrowLeft
+import com.composables.icons.lucide.Lucide
 import com.initium.assignment.ui.theme.Md3
 
 @Composable
@@ -43,8 +43,8 @@ fun CustomTopBar(text: String, onBackClick: (() -> Unit)? = null) {
                 Icon(
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
-                        .clickable { onBackClick?.invoke() },
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back",
+                        .clickable { onBackClick.invoke() },
+                    imageVector = Lucide.ArrowLeft, contentDescription = "Back",
                     tint = Md3.colorScheme.scrim
                 )
             }

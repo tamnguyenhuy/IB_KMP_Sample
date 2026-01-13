@@ -1,4 +1,4 @@
-rootProject.name = "Assignment"
+rootProject.name = "KMP_Sample"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

@@ -15,10 +15,7 @@ plugins {
 
 kotlin {
     jvmToolchain(11)
-    androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-    }
+    androidTarget()
     
     listOf(
         iosX64(),
@@ -80,6 +77,9 @@ kotlin {
             // coil dependencies to fetch images from url
             implementation(libs.coil.compose)
             implementation(libs.coil.network.common)
+
+            // lucide icons for composables
+            implementation(libs.composables.lucide.icons)
         }
 
         iosMain.dependencies {

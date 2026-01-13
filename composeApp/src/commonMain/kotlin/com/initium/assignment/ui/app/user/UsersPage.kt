@@ -4,8 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import assignment.composeapp.generated.resources.Res
-import assignment.composeapp.generated.resources.github_users
 import com.initium.assignment.ui.app.user.mvi.UserEvent
 import com.initium.assignment.ui.app.user.mvi.UserState
 import com.initium.assignment.ui.app.user.mvi.UserViewModel
@@ -16,6 +14,8 @@ import com.initium.assignment.ui.uikit.GenericLazyList
 import com.initium.assignment.ui.uikit.UserItem
 import com.initium.assignment.ui.uikit.UserItemShimmer
 import com.initium.assignment.ui.uikit.rememberGenericLazyListState
+import kmp_sample.composeapp.generated.resources.Res
+import kmp_sample.composeapp.generated.resources.github_users
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 

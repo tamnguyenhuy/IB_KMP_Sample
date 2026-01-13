@@ -12,24 +12,23 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import assignment.composeapp.generated.resources.Res
-import assignment.composeapp.generated.resources.blog
-import assignment.composeapp.generated.resources.follower
-import assignment.composeapp.generated.resources.following
-import assignment.composeapp.generated.resources.user_details
+import kmp_sample.composeapp.generated.resources.Res
+import kmp_sample.composeapp.generated.resources.blog
+import kmp_sample.composeapp.generated.resources.follower
+import kmp_sample.composeapp.generated.resources.following
+import kmp_sample.composeapp.generated.resources.user_details
+import com.composables.icons.lucide.Flower
+import com.composables.icons.lucide.Lucide
+import com.composables.icons.lucide.PersonStanding
 import com.initium.assignment.ui.app.userdetail.mvi.UserDetailEvent
 import com.initium.assignment.ui.app.userdetail.mvi.UserDetailState
 import com.initium.assignment.ui.app.userdetail.mvi.UserDetailViewModel
@@ -106,13 +105,25 @@ class UserDetailPage(
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             InfoItem(
-                icon = Icons.Filled.Person,
+                icon = {
+                    Icon(
+                        imageVector = Lucide.PersonStanding,
+                        contentDescription = null,
+                        modifier = Modifier.size(36.dp)
+                    )
+                },
                 count = followersCount,
                 label = stringResource(Res.string.follower),
                 isLoading = isLoading
             )
             InfoItem(
-                icon = Icons.Filled.Favorite,
+                icon = {
+                    Icon(
+                        imageVector = Lucide.Flower,
+                        contentDescription = null,
+                        modifier = Modifier.size(36.dp)
+                    )
+                },
                 count = followingCount,
                 label = stringResource(Res.string.following),
                 isLoading = isLoading
@@ -121,7 +132,7 @@ class UserDetailPage(
     }
 
     @Composable
-    private fun InfoItem(icon: ImageVector, count: String, label: String, isLoading: Boolean = false) {
+    private fun InfoItem(icon: @Composable () -> Unit, count: String, label: String, isLoading: Boolean = false) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -133,11 +144,7 @@ class UserDetailPage(
                     .background(Md3.colorScheme.secondary.copy(alpha = 0.1f)),
                 contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = null,
-                    modifier = Modifier.size(36.dp)
-                )
+                icon()
             }
 
             InfoText(text = count, style = Md3.typography.bodyLarge, isLoading = isLoading)
