@@ -15,7 +15,7 @@ import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
@@ -39,11 +39,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import assignment.composeapp.generated.resources.Res
-import assignment.composeapp.generated.resources.close
-import assignment.composeapp.generated.resources.retry_txt
-import com.initium.assignment.model.DEFAULT_LIMIT
-import com.initium.assignment.model.ListDataStruct
+import kmp_sample.composeapp.generated.resources.Res
+import kmp_sample.composeapp.generated.resources.close
+import kmp_sample.composeapp.generated.resources.retry_txt
+import com.initium.assignment.domain.model.DEFAULT_LIMIT
+import com.initium.assignment.domain.model.ListDataStruct
 import com.initium.assignment.ui.theme.Md3
 import kotlinx.coroutines.flow.distinctUntilChanged
 import org.jetbrains.compose.resources.painterResource

@@ -1,6 +1,6 @@
 package com.initium.assignment.data.remote.models
 
-import com.initium.assignment.model.User
+import com.initium.assignment.domain.model.User
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

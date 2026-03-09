@@ -2,7 +2,7 @@ package com.initium.assignment.data.local.implementations
 
 import com.initium.assignment.UserDb
 import com.initium.assignment.data.local.contracts.IUserLocal
-import com.initium.assignment.model.User
+import com.initium.assignment.domain.model.User
 import com.initium.assignment.kmp.domain.repository.local.db.MyDatabase
 
 class UserLocalImpl(db: MyDatabase) : IUserLocal {

@@ -1,4 +1,4 @@
-package com.initium.assignment.model
+package com.initium.assignment.domain.model
 
 const val DEFAULT_LIMIT = 20
 

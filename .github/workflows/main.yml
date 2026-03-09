@@ -3,26 +3,39 @@ name: Verify
 on:
   push:
     branches-ignore:
-      - main  # Trigger on every push to any branch ignore main
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build:
-    name: 🔨 Verify
+  verify:
+    name: 🔨 Build & Verify
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
+          distribution: "temurin"
           java-version: 17
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Make gradle executable
         run: chmod +x ./gradlew
 
-      - name: Build with Gradle
-        run: ./gradlew build --stacktrace
-        
+      - name: Compile common code (iOS target)
+        run: ./gradlew composeApp:compileKotlinIosSimulatorArm64 --stacktrace
+
+      - name: Build Android APK
+        run: ./gradlew composeApp:assembleDebug --stacktrace
+
       - name: Run tests
-        run: ./gradlew test --stacktrace
+        run: ./gradlew composeApp:allTests --stacktrace
+
+      - name: Run Detekt (static analysis)
+        run: ./gradlew detekt --stacktrace

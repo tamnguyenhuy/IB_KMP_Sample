@@ -1,7 +1,3 @@
-import io.gitlab.arturbosch.detekt.Detekt
-import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -15,9 +11,11 @@ plugins {
 
 kotlin {
     jvmToolchain(11)
+    
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
+        compilerOptions {
+            jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+        }
     }
     
     listOf(
@@ -80,6 +78,9 @@ kotlin {
             // coil dependencies to fetch images from url
             implementation(libs.coil.compose)
             implementation(libs.coil.network.common)
+
+            // lucide icons for composables
+            implementation(libs.composables.lucide.icons)
         }
 
         iosMain.dependencies {
@@ -89,22 +90,12 @@ kotlin {
 
         commonTest.dependencies {
             implementation(kotlin("test"))
-            @OptIn(ExperimentalComposeLibrary::class)
-            implementation(compose.uiTest)
             implementation(libs.coroutines.test)
             implementation(libs.bundles.common.test)
         }
 
         androidUnitTest.dependencies {
             implementation(libs.bundles.android.test)
-        }
-    }
-}
-
-sqldelight {
-    databases {
-        create("MyDatabase") {
-            packageName.set("com.initium.assignment.kmp.domain.repository.local.db")
         }
     }
 }
@@ -130,11 +121,14 @@ android {
             isMinifyEnabled = false
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
+}
 
+sqldelight {
+    databases {
+        create("MyDatabase") {
+            packageName.set("com.initium.assignment.kmp.domain.repository.local.db")
+        }
+    }
 }
 
 dependencies {

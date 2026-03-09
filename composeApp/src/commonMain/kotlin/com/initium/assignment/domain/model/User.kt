@@ -1,4 +1,4 @@
-package com.initium.assignment.model
+package com.initium.assignment.domain.model
 
 data class User(
     val id: Int = 0,

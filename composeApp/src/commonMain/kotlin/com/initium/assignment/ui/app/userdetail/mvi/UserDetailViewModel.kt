@@ -1,10 +1,10 @@
 package com.initium.assignment.ui.app.userdetail.mvi
 
-import com.initium.assignment.domain.services.UserService
+import com.initium.assignment.domain.usecase.FetchUserDetailUseCase
 import com.initium.assignment.ui.core.mvi.MviViewModel
 
 class UserDetailViewModel(
-    private val userService: UserService
+    private val fetchUserDetailUseCase: FetchUserDetailUseCase
 ) :
     MviViewModel<UserDetailState, UserDetailEvent>(initial = UserDetailState()) {
 
@@ -13,7 +13,7 @@ class UserDetailViewModel(
             is UserDetailEvent.Init -> {
                 safeLaunch {
                     update { copy(isLoading = true) }
-                    val userDetail = userService.fetchUserDetail(userName = event.userName)
+                    val userDetail = fetchUserDetailUseCase(userName = event.userName)
                     update {
                         copy(
                             userName = event.userName,
