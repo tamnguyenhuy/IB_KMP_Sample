@@ -1,18 +1,20 @@
 package com.initium.assignment.ui.app.user.mvi
 
-import com.initium.assignment.model.ListDataStruct
-import com.initium.assignment.domain.services.UserService
+import com.initium.assignment.domain.model.ListDataStruct
+import com.initium.assignment.domain.usecase.ClearUserCacheUseCase
+import com.initium.assignment.domain.usecase.FetchUsersUseCase
 import com.initium.assignment.ui.core.mvi.MviViewModel
 
 class UserViewModel(
-    private val userService: UserService
+    private val fetchUsersUseCase: FetchUsersUseCase,
+    private val clearUserCacheUseCase: ClearUserCacheUseCase
 ) : MviViewModel<UserState, UserEvent>(initial = UserState()) {
 
     override fun processEvent(event: UserEvent) {
         when (event) {
             is UserEvent.Fetch -> safeLaunch {
                 if (event.isRefresh) {
-                    userService.removeALlUsers()
+                    clearUserCacheUseCase()
                     update {
                         copy(
                             isRefreshing = true,
@@ -25,7 +27,7 @@ class UserViewModel(
                 // since is the id of the last user in the existing list or 0 if the list is empty
                 val since = if (users.dataList.isEmpty()) 0 else users.dataList.last().id
 
-                val user = userService.fetchUser(users.itemPerPage, since)
+                val user = fetchUsersUseCase(users.itemPerPage, since)
                 update {
                     copy(
                         users = users.append(user),

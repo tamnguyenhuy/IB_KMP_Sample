@@ -4,8 +4,8 @@ import co.touchlab.kermit.Logger
 import com.initium.assignment.data.remote.apis.contracts.IUserApi
 import com.initium.assignment.data.remote.serverapi.infrastructure.ServerException
 import com.initium.assignment.data.repository.remote.RemoteRepoBase
-import com.initium.assignment.data.repository.remote.contracts.IUserRemoteRepo
-import com.initium.assignment.model.User
+import com.initium.assignment.domain.repository.IUserRemoteRepo
+import com.initium.assignment.domain.model.User
 
 class UserRemoteRepoImpl(private val userApi: IUserApi) : RemoteRepoBase(), IUserRemoteRepo {
     companion object {

@@ -1,6 +1,6 @@
-package com.initium.assignment.data.repository.remote.contracts
+package com.initium.assignment.domain.repository
 
-import com.initium.assignment.model.User
+import com.initium.assignment.domain.model.User
 
 interface IUserRemoteRepo {
 

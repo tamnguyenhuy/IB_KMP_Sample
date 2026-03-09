@@ -1,10 +1,10 @@
 
-package com.initium.assignment.data.repository.local.implementaions
+package com.initium.assignment.data.repository.local.implementations
 
 import com.initium.assignment.UserDb
 import com.initium.assignment.data.local.contracts.IUserLocal
-import com.initium.assignment.data.repository.local.contracts.IUserLocalRepo
-import com.initium.assignment.model.User
+import com.initium.assignment.domain.repository.IUserLocalRepo
+import com.initium.assignment.domain.model.User
 
 class UserLocalRepoImpl(private val userLocal: IUserLocal): IUserLocalRepo {
     override fun getAllUsers(): List<User> {

@@ -5,6 +5,6 @@ import com.initium.assignment.ui.app.userdetail.mvi.UserDetailViewModel
 import org.koin.dsl.module
 
 val uiModule = module {
-    single { UserViewModel(get()) }
+    single { UserViewModel(get(), get()) }
     single { UserDetailViewModel(get()) }
 }

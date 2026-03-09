@@ -1,7 +1,7 @@
 package com.initium.assignment.data.local.contracts
 
 import com.initium.assignment.UserDb
-import com.initium.assignment.model.User
+import com.initium.assignment.domain.model.User
 
 interface IUserLocal {
 

@@ -1,7 +1,6 @@
+package com.initium.assignment.domain.repository
 
-package com.initium.assignment.data.repository.local.contracts
-
-import com.initium.assignment.model.User
+import com.initium.assignment.domain.model.User
 
 interface IUserLocalRepo {
 

@@ -1,7 +1,3 @@
-import io.gitlab.arturbosch.detekt.Detekt
-import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -15,7 +11,12 @@ plugins {
 
 kotlin {
     jvmToolchain(11)
-    androidTarget()
+    
+    androidTarget {
+        compilerOptions {
+            jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+        }
+    }
     
     listOf(
         iosX64(),
@@ -89,22 +90,12 @@ kotlin {
 
         commonTest.dependencies {
             implementation(kotlin("test"))
-            @OptIn(ExperimentalComposeLibrary::class)
-            implementation(compose.uiTest)
             implementation(libs.coroutines.test)
             implementation(libs.bundles.common.test)
         }
 
         androidUnitTest.dependencies {
             implementation(libs.bundles.android.test)
-        }
-    }
-}
-
-sqldelight {
-    databases {
-        create("MyDatabase") {
-            packageName.set("com.initium.assignment.kmp.domain.repository.local.db")
         }
     }
 }
@@ -130,11 +121,14 @@ android {
             isMinifyEnabled = false
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
+}
 
+sqldelight {
+    databases {
+        create("MyDatabase") {
+            packageName.set("com.initium.assignment.kmp.domain.repository.local.db")
+        }
+    }
 }
 
 dependencies {
