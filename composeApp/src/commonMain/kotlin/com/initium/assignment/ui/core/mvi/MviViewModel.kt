@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
-
 abstract class MviViewModel<STATE : UiState, EVENT : UiEvent>(initial: STATE) : ViewModel() {
 
     private val _state = MutableStateFlow(initial)

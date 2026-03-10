@@ -30,25 +30,6 @@ import com.initium.assignment.ui.theme.Md3
 import com.initium.assignment.ui.uikit.extension.shimmerEffect
 
 @Composable
-private fun UserCard(
-    content: @Composable () -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-//            .clickable(enabled = onClick != null, onClick = onClick ?: {})
-        ,
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp) // Adjust this value if needed
-    ) {
-        content()
-    }
-}
-
-@Composable
 fun UserItem(name: String, link: String, imageLink: String, onClick: (() -> Unit)? = null) {
     UserCard {
         Row(
@@ -138,5 +119,22 @@ fun UserItemShimmer(size: Int = 3) {
                 }
             }
         }
+    }
+}
+
+@Composable
+fun UserCard(
+    content: @Composable () -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(12.dp))
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        shape = RoundedCornerShape(12.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp) // Adjust this value if needed
+    ) {
+        content()
     }
 }

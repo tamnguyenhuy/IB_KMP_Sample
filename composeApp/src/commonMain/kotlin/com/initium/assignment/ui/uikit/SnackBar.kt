@@ -25,8 +25,6 @@ fun SnackBar() {
             modifier = Modifier.padding(padding),
             contentAlignment = Alignment.Center
         ) {
-
-
         }
     }
 }

@@ -6,7 +6,7 @@ import com.initium.assignment.data.local.contracts.IUserLocal
 import com.initium.assignment.domain.repository.IUserLocalRepo
 import com.initium.assignment.domain.model.User
 
-class UserLocalRepoImpl(private val userLocal: IUserLocal): IUserLocalRepo {
+class UserLocalRepoImpl(private val userLocal: IUserLocal) : IUserLocalRepo {
     override fun getAllUsers(): List<User> {
         return userLocal.getAllUsers().map { it.toUser() }
     }
@@ -42,4 +42,3 @@ class UserLocalRepoImpl(private val userLocal: IUserLocal): IUserLocalRepo {
         )
     }
 }
-
