@@ -4,7 +4,7 @@ import app.cash.sqldelight.db.SqlDriver
 import com.initium.assignment.kmp.domain.repository.local.db.MyDatabase
 import org.koin.core.scope.Scope
 
-expect fun Scope.sqlDriverFactory() : SqlDriver
+expect fun Scope.sqlDriverFactory(): SqlDriver
 
 fun createDatabase(driver: SqlDriver): MyDatabase {
     return MyDatabase(

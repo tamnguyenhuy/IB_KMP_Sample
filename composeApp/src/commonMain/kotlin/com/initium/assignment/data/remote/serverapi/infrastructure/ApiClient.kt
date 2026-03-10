@@ -138,5 +138,4 @@ open class ApiClient(val basePath: String, private val httpClient: HttpClient) {
 
     private fun buildRequestData(block: HttpRequestBuilder.() -> Unit) =
         HttpRequestBuilder().apply(block)
-
 }

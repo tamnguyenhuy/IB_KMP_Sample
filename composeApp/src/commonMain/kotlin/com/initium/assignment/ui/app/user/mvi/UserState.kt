@@ -8,7 +8,4 @@ data class UserState(
     val users: ListDataStruct<User> = ListDataStruct(),
     val isRefreshing: Boolean = false,
     val isHasFailure: Boolean = false
-) : UiState {
-
-
-}
+) : UiState

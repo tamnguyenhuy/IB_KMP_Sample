@@ -33,10 +33,8 @@ abstract class ContentPage<S : UiState, E : UiEvent, VM : MviViewModel<S, E>> : 
             }
         }
 
-
         Body(state, ::submit)
     }
-
 
     @Composable
     abstract fun Body(state: S, onEvent: (E) -> Unit)

@@ -19,7 +19,7 @@ import kmp_sample.composeapp.generated.resources.github_users
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
-class UsersPage: ContentPage<UserState, UserEvent, UserViewModel>() {
+class UsersPage : ContentPage<UserState, UserEvent, UserViewModel>() {
 
     @Composable
     override fun injectViewModel(): UserViewModel = koinInject()
