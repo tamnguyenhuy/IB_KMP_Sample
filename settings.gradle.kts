@@ -30,3 +30,4 @@ dependencyResolutionManagement {
 
 include(":composeApp")
 includeBuild("tooling")
+include(":shared")

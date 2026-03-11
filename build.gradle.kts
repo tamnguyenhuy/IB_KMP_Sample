@@ -9,4 +9,6 @@ plugins {
     alias(libs.plugins.sqlDelight).apply(false)
     alias(libs.plugins.kotlin.serialization).apply(false)
     alias(libs.plugins.detekt).apply(false)
+    alias(libs.plugins.android.kotlin.multiplatform.library) apply false
+    alias(libs.plugins.android.lint) apply false
 }

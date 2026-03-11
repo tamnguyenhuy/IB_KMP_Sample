@@ -30,6 +30,7 @@ robolectric = "4.16.1"
 testExtJunit = "1.3.0"
 detekt = "1.23.8"
 composablesIcons = "2.2.1"
+kotlinStdlib = "2.3.10"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
@@ -105,6 +106,7 @@ android-testCore = { module = "androidx.test:core", version.ref = "androidXTestC
 android-testExt = { module = "androidx.test.ext:junit", version.ref = "testExtJunit" }
 android-testRunner = { module = "androidx.test:runner", version.ref = "testRunner" }
 android-roboelectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
 
 [bundles]
 common-test = ["common-test", "common-testCommon", "common-testAnnotations"]
@@ -119,3 +121,5 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
+android-lint = { id = "com.android.lint", version.ref = "agp" }
