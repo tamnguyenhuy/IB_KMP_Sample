@@ -4,8 +4,6 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.sqlDelight)
     alias(libs.plugins.detekt)
 }
 
@@ -33,19 +31,11 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-            implementation(libs.ktor.client.okhttp)
             implementation(libs.koin.android)
-            implementation(libs.coroutines.android)
-            implementation(libs.sqlDelight.driver.android)
-            implementation(libs.coil.network.anroid)
         }
         commonMain.dependencies {
-            // Ktor dependencies for network calls
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.client.serialization)
-            implementation(libs.ktor.client.logging)
-            implementation(libs.ktor.client.json)
+            // Shared module (data + domain layers)
+            implementation(projects.shared)
 
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -57,9 +47,6 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.coroutines.core)
-            implementation(libs.serialization)
-            implementation(libs.serialization.json)
-            implementation(libs.kermit)
 
             // voyager dependencies for navigation
             implementation(libs.voyager.navigator)
@@ -72,9 +59,6 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
 
-            // sqlDelight dependencies for local db
-            implementation(libs.sqlDelight.driver.common)
-
             // coil dependencies to fetch images from url
             implementation(libs.coil.compose)
             implementation(libs.coil.network.common)
@@ -84,8 +68,7 @@ kotlin {
         }
 
         iosMain.dependencies {
-            implementation(libs.ktor.client.darwin)
-            implementation(libs.sqlDelight.driver.ios)
+            // No data-layer deps needed here anymore; they live in shared
         }
 
         commonTest.dependencies {
@@ -119,14 +102,6 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-        }
-    }
-}
-
-sqldelight {
-    databases {
-        create("MyDatabase") {
-            packageName.set("com.initium.assignment.kmp.domain.repository.local.db")
         }
     }
 }
